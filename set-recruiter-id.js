@@ -1,7 +1,7 @@
-// Sets a form element labelled recruiter ID with the 
+// Sets a form input 'recruiter_id_label' with the parameter 'recruiter_id_parameter'
 
 var recruiter_id_parameter = "recruiter_id";
-var recruiter_id_label = "RecruiterID";
+var recruiter_id_label = "Recruiter ID";
 
 function getParameterByName(name, url) {
   console.log("made it to getParameterByName");
@@ -15,13 +15,16 @@ function getParameterByName(name, url) {
 }
 
 $(document).ready(function() {
-
-  debugger;
+  
+  // get the recruiter id paramter
   var recruiter_id = getParameterByName(recruiter_id_parameter);
   
+  // get the recruiter
   var label = $("label:contains('" + recruiter_id_label + "')");  
-  var input_id = $(label).attr("for");
   
-  $("#" + input_id).value(recruiter_id);
- 
+  if( recruiter_id && label ) {
+    // set the recruiter id form input with the parameter
+    var input_id = $(label).attr("for");  
+    $("#" + input_id).val(recruiter_id);
+  } 
 });
