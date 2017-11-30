@@ -24,4 +24,4 @@ $(document).ready(function() {
   
   $("#" + input_id).value(recruiter_id);
  
-}
+});
