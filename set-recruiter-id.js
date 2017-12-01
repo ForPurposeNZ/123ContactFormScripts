@@ -5,7 +5,7 @@ var recruiter_id_label = "Recruiter ID";
 
 function getParameterByName(name, url) {
   console.log("made it to getParameterByName");
-  if (!url) url = decodeURIComponent(window.location.href);
+  if (!url) url = window.location.href;
   name = name.replace(/[\[\]]/g, "\\$&");
   var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
     results = regex.exec(url);
@@ -18,6 +18,9 @@ $(document).ready(function() {
   
   // get the recruiter id paramter
   var recruiter_id = getParameterByName(recruiter_id_parameter);
+  if( !recruiter_id) { // try to uri decode the href for embedded forms
+    recruiter_id = getParameterByName(recruiter_id_parameter, decodeURIComponent(window.location.href));   
+  }
   
   // get the recruiter
   var label = $("label:contains('" + recruiter_id_label + "')");  
