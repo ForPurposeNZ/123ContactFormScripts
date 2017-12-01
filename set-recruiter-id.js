@@ -5,7 +5,7 @@ var recruiter_id_label = "Recruiter ID";
 
 function getParameterByName(name, url) {
   console.log("made it to getParameterByName");
-  if (!url) url = window.location.href;
+  if (!url) url = decodeURIComponent(window.location.href);
   name = name.replace(/[\[\]]/g, "\\$&");
   var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
     results = regex.exec(url);
