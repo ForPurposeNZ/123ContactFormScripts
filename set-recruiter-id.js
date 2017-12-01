@@ -24,7 +24,7 @@ $(document).ready(function() {
     var urlparts = window.location.href.split('ref=');
     if( urlparts.length >= 2 ) {
       urlparts2 = urlparts[1].split('[%ANDCHAR%]'); 
-      recruiter_id = getParameterByName(recruiter_id_parameter, urlparts2[0]);   
+      recruiter_id = getParameterByName(recruiter_id_parameter, decodeURIComponent(urlparts2[0]));   
     }
   }
   
