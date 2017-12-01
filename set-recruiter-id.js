@@ -18,8 +18,14 @@ $(document).ready(function() {
   
   // get the recruiter id paramter
   var recruiter_id = getParameterByName(recruiter_id_parameter);
-  if( !recruiter_id) { // try to uri decode the href for embedded forms
-    recruiter_id = getParameterByName(recruiter_id_parameter, decodeURIComponent(window.location.href));   
+
+  // ugly fix for embedded contact forms - extract relevant part of url
+  if( !recruiter_id) {
+    var urlparts = window.location.href.split('ref=');
+    if( urlparts.length >= 2 ) {
+      urlparts2 = urlparts[1].split('[%ANDCHAR%]'); 
+      recruiter_id = getParameterByName(recruiter_id_parameter, urlparts2[0]);   
+    }
   }
   
   // get the recruiter
